@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/img_banner"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/face_banner"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitStart" />
+
+    <LinearLayout
+        android:id="@+id/linear_idioms"
+        android:layout_below="@+id/img_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_idioms" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue_face"
+            android:onClick="onClickMoreIdioms"
+            android:text="@string/str_mas" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_campos"
+        android:layout_below="@+id/linear_idioms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:boxBackgroundMode="filled"
+            android:foregroundTint="@color/blue_face_dark">
+
+            <EditText
+                android:lines="1"
+
+                android:inputType="textEmailAddress"
+                android:id="@+id/edtxt_user"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="@string/str_phone_login" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/blue_face_dark">
+
+            <EditText
+                android:foregroundTint="@color/blue_face_dark"
+                android:shadowColor="@color/blue_face_dark"
+                android:lines="1"
+                android:inputType="textPassword"
+                android:id="@+id/edtxt_pass"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:hint="@string/str_contrasenia" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/str_iniciar_sesion"
+            android:textSize="16sp"
+            android:onClick="onClickLogin"
+            android:textColor="@color/blue_text"
+            android:background="@color/blue_face"
+            android:textAllCaps="false"
+            style="@style/TextAppearance.AppCompat.Widget.Button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/str_olvido"
+            android:textSize="16sp"
+            android:onClick="onClickResetPass"
+            android:textColor="@color/blue_face"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/linear_campos">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="o"
+            app:layout_constraintEnd_toStartOf="@+id/view2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/str_crear_cuenta"
+        android:onClick="onClickRegister"
+        android:textSize="14sp"
+        android:background="@color/green"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="false"
+        style="@style/TextAppearance.AppCompat.Button" />
+
+</RelativeLayout>

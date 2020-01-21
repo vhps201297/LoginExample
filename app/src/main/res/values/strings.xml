@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">AppPrueba1</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="str_next">next</string>
+    <string name="str_response">Response</string>
+    <string name="str_onback">onBack</string>
+    <string name="str_result">Result</string>
+    <string name="str_remove">Remove</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="str_user">user</string>
+    <string name="str_pass">pass</string>
+    <string name="str_iniciar_sesion">Iniciar sesión</string>
+    <string name="str_olvido">¿Olvidaste tu contraseña?</string>
+    <string name="str_crear_cuenta">Crear cuenta de Facebook</string>
+    <string name="str_phone_login">Telefono o correo electrónico</string>
+    <string name="str_contrasenia">Contraseña</string>
+    <string name="str_idioms">English · Français · </string>
+    <string name="str_mas">Más...</string>
+
+    <string name="str_error_register">Por el momento no se pude registrar</string>
+    <string name="str_error_idioms">Por el momento no hay más idiomas</string>
+</resources>
