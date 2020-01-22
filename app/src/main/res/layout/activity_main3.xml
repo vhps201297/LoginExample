@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -57,8 +58,7 @@
 
             <EditText
                 android:lines="1"
-
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:id="@+id/edtxt_user"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -74,8 +74,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:passwordToggleEnabled="true"
-            app:boxBackgroundMode="filled"
-            app:boxStrokeColor="@color/blue_face_dark">
+            style="@style/EditTextStyle"
+        >
 
             <EditText
                 android:foregroundTint="@color/blue_face_dark"

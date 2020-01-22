@@ -1,17 +1,22 @@
 package com.example.appprueba1;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText edtxtUser;
     private EditText edtxtPass;
+    static int CODE_REQUEST = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +33,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view) {
+
+        Usuario usuario = new Usuario(edtxtUser.getText().toString(),
+                edtxtPass.getText().toString(), "12/12/12");
+
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(getString(R.string.str_user), edtxtUser.getText().toString());
-        intent.putExtra(getString(R.string.str_pass), edtxtPass.getText().toString());
-        startActivity(intent);
+        intent.putExtra(getString(R.string.str_user), usuario);
+
+        startActivityForResult(intent,CODE_REQUEST);
     }
 
     public void onClickMoreIdioms(View view) {
@@ -40,5 +49,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onClickRegister(View view) {
         Toast.makeText(this, R.string.str_error_register, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.i("Request",String.valueOf(requestCode));
+        Log.i("ResultCode", String.valueOf(resultCode));
     }
 }

@@ -10,14 +10,15 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView txtSaludo;
     private String user, pass;
-
+    private Usuario usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
         txtSaludo = findViewById(R.id.txt_saludo);
-        pass = getIntent().getStringExtra(getString(R.string.str_pass));
-        user = getIntent().getStringExtra(getString(R.string.str_user));
+
+        usuario = (Usuario) getIntent().getSerializableExtra(getString(R.string.str_user));
 
     }
 
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        txtSaludo.setText("Bienvenido " + user + " tu contrase es: " + pass);
+        if(usuario != null)
+            txtSaludo.setText("Bienvenido " + usuario.getNombre() + " tu contrase es: " + usuario.getPass());
     }
 
     public void onClickBack(View view) {
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickResult(View view) {
         setResult(RESULT_OK);
+        finish();
 
     }
 

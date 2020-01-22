@@ -1,0 +1,56 @@
+package com.example.appprueba1.activityFragment;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.appprueba1.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class ParentActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+
+    BottomNavigationView bottomNavigationView;
+
+    FirstFragment firstFragment = new FirstFragment();
+    SecondFragment secondFragment = new SecondFragment();
+    ThirdFragment thirdFragment = new ThirdFragment();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_parent);
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()){
+            case R.id.navigation_home:
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame,firstFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack(null)
+                        .commit();
+
+                return true;
+            case R.id.navigation_dashboard:
+
+                return true;
+            case R.id.navigation_notifications:
+
+                return true;
+        }
+
+        return false;
+    }
+}
