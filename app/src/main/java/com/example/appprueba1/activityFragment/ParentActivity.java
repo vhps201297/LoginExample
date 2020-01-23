@@ -44,9 +44,19 @@ public class ParentActivity extends AppCompatActivity implements BottomNavigatio
 
                 return true;
             case R.id.navigation_dashboard:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame,secondFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack(null)
+                        .commit();
 
                 return true;
             case R.id.navigation_notifications:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame,thirdFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack(null)
+                        .commit();
 
                 return true;
         }
