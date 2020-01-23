@@ -1,5 +1,7 @@
 package com.example.appprueba1.adapterExample;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,7 +29,8 @@ public class AdapterContacto extends RecyclerView.Adapter<AdapterContacto.Contac
     public ContactoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         //View view = new
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview,parent,false);
+        return new ContactoViewHolder(view);
     }
 
     @Override

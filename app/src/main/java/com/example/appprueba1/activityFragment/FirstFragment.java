@@ -5,12 +5,14 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.appprueba1.R;
+import com.example.appprueba1.adapterExample.AdapterContacto;
 import com.example.appprueba1.models.Contacto;
 
 import java.util.ArrayList;
@@ -19,6 +21,8 @@ import java.util.List;
 public class FirstFragment extends Fragment {
 
     List<Contacto> contactos = new ArrayList<>();
+    AdapterContacto adapterContacto;
+    RecyclerView rvContactos;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -32,20 +36,25 @@ public class FirstFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        adapterContacto = new AdapterContacto(contactos);
+        rvContactos.setAdapter(adapterContacto);
     }
 
     @Override
     public void onStart() {
         super.onStart();
         llenarContactos();
+        adapterContacto.notifyDataSetChanged();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
+        rvContactos = view.findViewById(R.id.recycler_view);
+        return view;
     }
 
 
