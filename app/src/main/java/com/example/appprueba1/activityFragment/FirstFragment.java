@@ -11,16 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.appprueba1.R;
+import com.example.appprueba1.models.Contacto;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FirstFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FirstFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class FirstFragment extends Fragment {
+
+    List<Contacto> contactos = new ArrayList<>();
 
     public FirstFragment() {
         // Required empty public constructor
@@ -38,6 +36,12 @@ public class FirstFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        llenarContactos();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -45,9 +49,18 @@ public class FirstFragment extends Fragment {
     }
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void llenarContactos(){
+        contactos.add(new Contacto("Juan Carlos","mensaje nuevo"));
+        contactos.add(new Contacto("Raul Eduardo","mensaje nuevo"));
+        contactos.add(new Contacto("Ruben Castillo","mensaje nuevo"));
+        contactos.add(new Contacto("Brandon Juarez","mensaje nuevo"));
+        contactos.add(new Contacto("Alberto Sánchez","mensaje nuevo"));
+        contactos.add(new Contacto("Noelia Ramirez","mensaje nuevo"));
+        contactos.add(new Contacto("Lizet Hernández","mensaje nuevo"));
+        contactos.add(new Contacto("Aylin Derbez","mensaje nuevo"));
+        contactos.add(new Contacto("Sandra Carvajal","mensaje nuevo"));
+
     }
+
 
 }
