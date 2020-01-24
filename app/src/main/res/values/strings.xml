@@ -147,4 +147,8 @@
     <string name="str_frame_uno">primer fragmento</string>
     <string name="str_ya_tengo_cuenta">Ya tengo cuenta</string>
 
+
+    <!-- url -->
+
+    <string name="url_registro">http://167.99.151.252:4000/createUser</string>
 </resources>

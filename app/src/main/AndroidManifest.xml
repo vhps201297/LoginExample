@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appprueba1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,28 +14,24 @@
         android:theme="@style/AppThemeMaterial"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".activityFragment.registro.RegistroActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeMaterial.NoActionBar"
-            android:name=".activityFragment.registro.RegistroActivity">
+            android:theme="@style/AppThemeMaterial.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".adapterExample.ListInfoActivity"></activity>
+        <activity android:name=".adapterExample.ListInfoActivity" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".activityFragment.ParentActivity"
-            android:theme="@style/AppThemeMaterial"
-            >
-
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeMaterial"></activity>
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeMaterial.AppThemeSplashNoActionBar">
-
-        </activity>
+            android:theme="@style/AppThemeMaterial.AppThemeSplashNoActionBar"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".ForgotActivity" />
     </application>

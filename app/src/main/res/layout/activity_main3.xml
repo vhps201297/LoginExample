@@ -80,7 +80,7 @@
             <EditText
                 android:lines="1"
                 android:inputType="textPassword"
-                android:id="@+id/edtxt_pass"
+                android:id="@+id/edtxt_pass_login"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="@string/str_contrasenia" />

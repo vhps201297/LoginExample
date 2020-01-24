@@ -47,13 +47,7 @@ public class FirstFragment extends Fragment {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // integrar servicios de eeste lado
-        adapterContacto.notifyDataSetChanged();
 
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +60,8 @@ public class FirstFragment extends Fragment {
         adapterContacto = new AdapterContacto(contactos);
         rvContactos.setLayoutManager(new LinearLayoutManager(view.getContext())); // solo faltaba esta linea
         rvContactos.setAdapter(adapterContacto);
+        contactos.clear();
+        adapterContacto.notifyDataSetChanged();
         llenarContactos();
 
         return view;
