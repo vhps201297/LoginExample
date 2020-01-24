@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.appprueba1.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,10 +18,12 @@ public class ParentActivity extends AppCompatActivity implements BottomNavigatio
 
 
     BottomNavigationView bottomNavigationView;
+    private static final String TAG_PARENT = "ParentActivity";
 
     FirstFragment firstFragment = new FirstFragment();
     SecondFragment secondFragment = new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,7 @@ public class ParentActivity extends AppCompatActivity implements BottomNavigatio
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home); // item  inicial
     }
 
     @Override
