@@ -5,4 +5,13 @@
 
         <item name="android:colorAccent">@android:color/holo_red_dark</item>
     </style>
+
+    <style name="ButtonMaterialGreen" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:backgroundTint">@color/green</item>
+    </style>
+    <style name="ButtonMaterialBlue" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/blue_face_light</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

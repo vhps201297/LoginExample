@@ -53,12 +53,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:boxBackgroundMode="filled"
-            android:foregroundTint="@color/blue_face_dark">
+            style="@style/EditTextStyle"
+            >
 
             <EditText
                 android:lines="1"
-                android:inputType="number"
+                android:inputType="textEmailAddress"
                 android:id="@+id/edtxt_user"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -78,29 +78,27 @@
         >
 
             <EditText
-                android:foregroundTint="@color/blue_face_dark"
-                android:shadowColor="@color/blue_face_dark"
                 android:lines="1"
                 android:inputType="textPassword"
                 android:id="@+id/edtxt_pass"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:hint="@string/str_contrasenia" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:text="@string/str_iniciar_sesion"
             android:textSize="16sp"
             android:onClick="onClickLogin"
-            android:textColor="@color/blue_text"
-            android:background="@color/blue_face"
             android:textAllCaps="false"
-            style="@style/TextAppearance.AppCompat.Widget.Button" />
+
+            style="@style/ButtonMaterialBlue" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -110,16 +108,16 @@
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/str_olvido"
-            android:textSize="16sp"
+            style="@style/TextButton"
             android:onClick="onClickResetPass"
-            android:textColor="@color/blue_face"
-            android:textStyle="bold" />
+             />
     </LinearLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_below="@+id/linear_campos">
@@ -140,6 +138,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="o"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
             app:layout_constraintEnd_toStartOf="@+id/view2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/view"
@@ -162,16 +162,15 @@
 
     <Button
         android:layout_width="280dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="@string/str_crear_cuenta"
         android:onClick="onClickRegister"
         android:textSize="14sp"
-        android:background="@color/green"
         android:textColor="@android:color/white"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="24dp"
         android:textAllCaps="false"
-        style="@style/TextAppearance.AppCompat.Button" />
+        style="@style/ButtonMaterialGreen" />
 
 </RelativeLayout>

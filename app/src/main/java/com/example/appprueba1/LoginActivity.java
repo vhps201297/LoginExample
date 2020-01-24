@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.appprueba1.activityFragment.ParentActivity;
+import com.example.appprueba1.activityFragment.registro.RegistroActivity;
+
 import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         Usuario usuario = new Usuario(edtxtUser.getText().toString(),
                 edtxtPass.getText().toString(), "12/12/12");
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ParentActivity.class);
         intent.putExtra(getString(R.string.str_user), usuario);
 
         startActivityForResult(intent,CODE_REQUEST);
@@ -49,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onClickRegister(View view) {
         Toast.makeText(this, R.string.str_error_register, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, RegistroActivity.class));
     }
 
     @Override

@@ -6,7 +6,9 @@
 
     <!-- Color azul facebook -->
     <color name="blue_face_dark">#2f477a</color>
-    <color name="blue_face">#3B5998</color>
-    <color name="green">#25D366</color>
+    <color name="blue_face_primary">#3B5998</color>
+    <color name="blue_face_light">#3360ff</color>
+    <color name="blue_face">#5c79ff	</color>
+    <color name="green">#50D344</color>
     <color name="blue_text">#8b9dc3</color>
 </resources>
