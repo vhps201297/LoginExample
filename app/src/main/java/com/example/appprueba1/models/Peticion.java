@@ -20,11 +20,12 @@ import java.util.Map;
 
 public class Peticion {
 
-    RequestQueue requestQueue;
+    final RequestQueue requestQueue;
     Context context;
 
     Map<String,String> params = new HashMap<>();
     Map<String,String> header = new HashMap<>();
+
 
     public Peticion(Context context, RequestQueue requestQueue){
         this.context = context;
@@ -37,7 +38,6 @@ public class Peticion {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Log.e("Error ....", ""+ error.networkResponse);
 
                 new MaterialAlertDialogBuilder(context)
                         .setTitle("Error")
@@ -62,9 +62,8 @@ public class Peticion {
                     return super.getHeaders();
                 } else{
                     return header;
-                }
             }
-        };
+        }};
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);

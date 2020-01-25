@@ -38,6 +38,8 @@ public class RegistroActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
+    private static final String REGISTER_TAG = "Registro";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,12 +76,12 @@ public class RegistroActivity extends AppCompatActivity {
                     .setPositiveButton("Aceptar", null)
                     .show();
         } else {
-            //RequestQueue requestQueue = Volley.newRequestQueue(this);
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
 
             String url = getString(R.string.url_registro);
 
-            setRegister();
-/*
+            //setRegister();
+
             Peticion peticionRegistro = new Peticion(this, requestQueue);
 
             peticionRegistro.addParams("user_name", userName.getText().toString());
@@ -92,13 +94,13 @@ public class RegistroActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-                        System.out.println(jsonObject);
-                        JSONObject jsonUser = jsonObject.getJSONObject("user");
-                        editor.putString("nombre_usuario",jsonObject.getString("user_name"));
-                        editor.putString("nombre",jsonObject.getString("name"));
-                        editor.putString("email",jsonObject.getString("email"));
-                        editor.putString("password",jsonObject.getString("password"));
+                        Log.i(REGISTER_TAG, "Ok response: " + response);
 
+                        JSONObject jsonUser = jsonObject.getJSONObject("user");
+                        editor.putString("nombre_usuario",jsonUser.getString("user_name"));
+                        editor.putString("nombre",jsonUser.getString("name"));
+                        editor.putString("email",jsonUser.getString("email"));
+                        editor.putString("password",jsonUser.getString("password"));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -111,28 +113,27 @@ public class RegistroActivity extends AppCompatActivity {
 
         // Se integran servicios
 
- */
 
-        }
     }
 
 
     public void setRegister(){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.POST, getString(R.string.url_registro), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println(response);
+                System.out.println("Correcto: " + response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println(error.networkResponse);
-
+                editor.putString("user_name", "");
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
+                Log.e(getString(R.string.app_name), "getParams");
                 Map<String, String> params = new HashMap<>();
                 params.put("user_name",userName.getText().toString());
                 params.put("name",name.getText().toString());
@@ -144,8 +145,11 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
 
+                Log.e(getString(R.string.app_name), "getHeader");
                 return super.getHeaders();
             }
+
+
         };
 
         request.setRetryPolicy(new DefaultRetryPolicy(20000,0,DefaultRetryPolicy.DEFAULT_MAX_RETRIES));
