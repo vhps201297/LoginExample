@@ -38,7 +38,7 @@ public class Peticion {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-
+                Log.e("Error", error.toString());
                 new MaterialAlertDialogBuilder(context)
                         .setTitle("Error")
                         .setMessage(error.getMessage())

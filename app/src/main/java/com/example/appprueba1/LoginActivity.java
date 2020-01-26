@@ -12,8 +12,9 @@ import android.widget.Toast;
 
 import com.example.appprueba1.activityFragment.ParentActivity;
 import com.example.appprueba1.activityFragment.registro.RegistroActivity;
-
-import java.io.Serializable;
+import com.example.appprueba1.models.ErrorRequest;
+import com.example.appprueba1.models.Usuario;
+import com.example.appprueba1.models.interfaces.LoginCompletion;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,11 +38,21 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onClickLogin(View view) {
 
-        Usuario usuario = new Usuario(edtxtUser.getText().toString(),
-                edtxtPass.getText().toString(), "12/12/12");
-        Intent intent = new Intent(this, ParentActivity.class);
-        intent.putExtra(getString(R.string.str_user), usuario);
-        startActivityForResult(intent,CODE_REQUEST);
+        final Usuario usuario = new Usuario(this);
+        usuario.doLogin(edtxtUser.getText().toString(), edtxtPass.getText().toString(), new LoginCompletion() {
+            @Override
+            public void loginResponse(ErrorRequest error) {
+                if (error == null){
+                    Intent intent = new Intent(LoginActivity.this, ParentActivity.class);
+                    intent.putExtra(getString(R.string.str_user), usuario);
+                    startActivity(intent);
+                    finish();
+                } else{
+                    Log.e(getString(R.string.app_name), "Error en la petición");
+                }
+            }
+        });
+
 
     }
 
@@ -50,15 +61,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view) {
-        Toast.makeText(this, R.string.str_error_register, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, RegistroActivity.class));
+        finish();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        Log.i("Request",String.valueOf(requestCode));
-        Log.i("ResultCode", String.valueOf(resultCode));
-    }
 }

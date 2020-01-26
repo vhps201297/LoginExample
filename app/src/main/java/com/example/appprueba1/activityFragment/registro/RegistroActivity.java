@@ -1,5 +1,6 @@
 package com.example.appprueba1.activityFragment.registro;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.appprueba1.LoginActivity;
 import com.example.appprueba1.R;
 import com.example.appprueba1.models.Peticion;
+import com.example.appprueba1.models.URLCodevstack;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONException;
@@ -40,6 +42,7 @@ public class RegistroActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     private static final String REGISTER_TAG = "Registro";
+    public static final int REGISTER_CODE = 5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +81,8 @@ public class RegistroActivity extends AppCompatActivity {
         } else {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-            String url = getString(R.string.url_registro);
+            // String url = getString(R.string.url_registro);
+            String url = URLCodevstack.REGISTRO; // se obtiene el url de la clase
 
             //setRegister();
 
@@ -101,7 +105,12 @@ public class RegistroActivity extends AppCompatActivity {
                         editor.putString("nombre",jsonUser.getString("name"));
                         editor.putString("email",jsonUser.getString("email"));
                         editor.putString("password",jsonUser.getString("password"));
+                        editor.apply();
 
+                        Intent intent = new Intent(RegistroActivity.this, SuccessRegisterActivity.class);
+                        startActivityForResult(intent,REGISTER_CODE);
+
+                        // startActivity();
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Log.e(getString(R.string.app_name),e.getMessage());
@@ -116,46 +125,13 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
-
-    public void setRegister(){
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.POST, getString(R.string.url_registro), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                System.out.println("Correcto: " + response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                editor.putString("user_name", "");
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Log.e(getString(R.string.app_name), "getParams");
-                Map<String, String> params = new HashMap<>();
-                params.put("user_name",userName.getText().toString());
-                params.put("name",name.getText().toString());
-                params.put("password",pass.getText().toString());
-                params.put("email",email.getText().toString());
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-
-                Log.e(getString(R.string.app_name), "getHeader");
-                return super.getHeaders();
-            }
-
-
-        };
-
-        request.setRetryPolicy(new DefaultRetryPolicy(20000,0,DefaultRetryPolicy.DEFAULT_MAX_RETRIES));
-        requestQueue.add(request);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REGISTER_CODE && resultCode == RESULT_OK){
+            finish();
+        }
     }
-
 
     public void onClickTengoCuenta(View view) {
         startActivity(new Intent(this, LoginActivity.class));

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activityFragment.registro.SuccessRegisterActivity">
+
+    <ImageView
+        android:id="@+id/img_registro_exitoso"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_leyenda_registro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cvs_reduc" />
+
+    <TextView
+        android:id="@+id/txt_leyenda_registro"
+        android:layout_width="327dp"
+        android:layout_height="0dp"
+        android:textAlignment="center"
+        android:layout_marginTop="48dp"
+        android:text="Felicidades ya te registraste en CodevsTackApp, prueba sus diferentes funcionamientos."
+        app:layout_constraintBottom_toTopOf="@+id/button_registro_exitoso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_registro_exitoso"
+        android:textColor="@color/blue_face_dark"
+        android:textSize="16dp"
+        />
+
+    <Button
+        android:id="@+id/button_registro_exitoso"
+        style="@style/ButtonMaterialBlue"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/str_terminar"
+        android:onClick="onClickTerminarRegistro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_leyenda_registro" />
+</androidx.constraintlayout.widget.ConstraintLayout>
