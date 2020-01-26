@@ -14,9 +14,9 @@
         android:theme="@style/AppThemeMaterial"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activityFragment.registro.SuccessRegisterActivity"></activity>
+        <activity android:name=".registro.SuccessRegisterActivity"></activity>
         <activity
-            android:name=".activityFragment.registro.RegistroActivity"
+            android:name=".registro.RegistroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeMaterial.NoActionBar">
             <intent-filter>

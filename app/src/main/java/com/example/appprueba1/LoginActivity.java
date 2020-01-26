@@ -1,6 +1,5 @@
 package com.example.appprueba1;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.appprueba1.activityFragment.ParentActivity;
-import com.example.appprueba1.activityFragment.registro.RegistroActivity;
+import com.example.appprueba1.registro.RegistroActivity;
 import com.example.appprueba1.models.ErrorRequest;
 import com.example.appprueba1.models.Usuario;
 import com.example.appprueba1.models.interfaces.LoginCompletion;
@@ -37,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view) {
-
+        /* Descomenta esto, para ver si los servicios ya sirven, si regresa un 500, es que hay un problema en el servidor.
         final Usuario usuario = new Usuario(this);
         usuario.doLogin(edtxtUser.getText().toString(), edtxtPass.getText().toString(), new LoginCompletion() {
             @Override
@@ -51,7 +50,13 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(getString(R.string.app_name), "Error en la petición");
                 }
             }
-        });
+        });*/
+
+        // se harcorea este intent para pasar al menu.
+        Intent intent = new Intent(LoginActivity.this, ParentActivity.class);
+        //intent.putExtra(getString(R.string.str_user), usuario);
+        startActivity(intent);
+        finish();
 
 
     }
